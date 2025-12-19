@@ -16,7 +16,7 @@ const certificates = [
   {
     title: "GitHub Foundation",
     issuer: "GitHub",
-    date: "2025", // Based on your CV plan
+    date: "2025", 
     icon: <SiGithub />,
     color: "text-white",
     bg: "group-hover:bg-white/10",
@@ -44,7 +44,7 @@ const certificates = [
     title: "Web Designer for Beginners",
     issuer: "University of Moratuwa",
     date: "2025",
-    icon: <FaUniversity />, // General Uni Icon for Web Design
+    icon: <FaUniversity />, 
     color: "text-blue-400",
     bg: "group-hover:bg-blue-400/10",
     border: "group-hover:border-blue-400/50"

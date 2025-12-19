@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  FaGraduationCap, FaCode, FaLaptopCode, 
+  FaCode, FaLaptopCode, 
   FaJava, FaPython, FaGitAlt, FaGithub, FaHtml5, FaCss3Alt, FaPhp 
 } from 'react-icons/fa';
 import { 
@@ -27,7 +27,7 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start relative z-10">
         
-       {/* --- LEFT COLUMN: UPDATED TEXT CONTENT --- */}
+       {/* --- LEFT COLUMN: TEXT CONTENT --- */}
         <motion.div 
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -44,7 +44,7 @@ const About = () => {
         </h2>
         
         <p className="text-textSecondary text-lg leading-relaxed mb-6">
-            I am a 2nd-year Software Engineering undergraduate at <strong className="text-white">SLIIT</strong> with a GPA of <strong className="text-primary">3.27</strong>. 
+            I am a 2nd-year Software Engineering undergraduate at <strong className="text-white">SLIIT</strong>. 
             My coding journey began with the strong logic of <strong className="text-white">C and C++</strong>, which laid the foundation for mastering <strong className="text-white">Java (OOP)</strong> and modern web technologies.
         </p>
         
@@ -52,23 +52,20 @@ const About = () => {
             Today, I specialize in the <strong className="text-white">MERN Stack</strong> and <strong className="text-white">Android (Kotlin)</strong>, while proficiently handling version control with <strong className="text-white">GitHub</strong>, API testing with <strong className="text-white">Postman</strong>, and UI design in <strong className="text-white">Figma</strong>. I am ready to tackle complex engineering challenges.
         </p>
 
-        <div className="grid grid-cols-2 gap-4">
-            <StatsCard 
-            icon={<FaGraduationCap />} 
-            value="3.27" 
-            label="Current GPA" 
-            />
-            <StatsCard 
-            icon={<FaCode />} 
-            value="20+" 
-            label="Tools & Languages" 
-            />
+        {/* Single Stat Card Layout */}
+        <div className="flex justify-start">
+            <div className="w-full sm:w-1/2"> 
+                <StatsCard 
+                icon={<FaCode />} 
+                value="20+" 
+                label="Tools & Languages" 
+                />
+            </div>
         </div>
         </motion.div>
 
 
         {/* --- RIGHT COLUMN: TECH STACK GRID --- */}
-        {/* Added proper ID for navigation */}
         <div id="skills" className="scroll-mt-28">
           <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
             <FaLaptopCode className="text-primary" /> Tech Arsenal
@@ -81,7 +78,7 @@ const About = () => {
             viewport={{ once: true }}
             className="grid grid-cols-3 sm:grid-cols-4 gap-4"
           >
-            {/* ROW 1: MERN Stack (The Money Makers) */}
+            {/* ROW 1: MERN Stack */}
             <TechItem icon={<SiReact />} name="React" color="#61DAFB" />
             <TechItem icon={<SiNodedotjs />} name="Node.js" color="#339933" />
             <TechItem icon={<SiExpress />} name="Express" color="#ffffff" />
@@ -99,13 +96,13 @@ const About = () => {
             <TechItem icon={<SiAndroidstudio />} name="Android Studio" color="#3DDC84" />
             <TechItem icon={<SiMysql />} name="MySQL" color="#4479A1" />
 
-            {/* ROW 4: Professional Tools (Workflow) */}
+            {/* ROW 4: Professional Tools */}
             <TechItem icon={<FaGitAlt />} name="Git" color="#F05032" />
             <TechItem icon={<FaGithub />} name="GitHub" color="#ffffff" />
             <TechItem icon={<SiPostman />} name="Postman" color="#FF6C37" />
             <TechItem icon={<SiFigma />} name="Figma" color="#F24E1E" />
             
-            {/* ROW 5: Web Foundations & Legacy */}
+            {/* ROW 5: Web Foundations */}
             <TechItem icon={<SiTailwindcss />} name="Tailwind" color="#06B6D4" />
             <TechItem icon={<FaHtml5 />} name="HTML5" color="#E34F26" />
             <TechItem icon={<FaCss3Alt />} name="CSS3" color="#1572B6" />
@@ -121,7 +118,7 @@ const About = () => {
 
 // --- Helper Components ---
 const StatsCard = ({ icon, value, label }) => (
-  <div className="bg-surface border border-white/5 p-4 rounded-lg flex items-center gap-4 hover:border-primary/30 transition-colors">
+  <div className="bg-surface border border-white/5 p-4 rounded-lg flex items-center gap-4 hover:border-primary/30 transition-colors shadow-lg">
     <div className="text-3xl text-primary bg-primary/10 p-2 rounded-md">
       {icon}
     </div>
