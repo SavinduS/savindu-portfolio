@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaFileDownload } from 'react-icons/fa'; // Added FaFileDownload
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -87,14 +87,14 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden text-white z-50">
-            <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
+            <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl focus:outline-none">
               {menuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -127,6 +127,20 @@ const Navbar = () => {
                 </motion.li>
               ))}
             </ul>
+
+            {/* --- NEW DOWNLOAD CV BUTTON FOR MOBILE --- */}
+            <motion.a 
+              href="/cv.pdf"
+              download
+              onClick={() => setMenuOpen(false)}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6 }} // Delays until after links appear
+              className="mt-10 px-8 py-3 bg-primary text-background font-bold rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:bg-cyan-400 active:scale-95 transition-all"
+            >
+              <FaFileDownload /> Download CV
+            </motion.a>
+
           </motion.div>
         )}
       </AnimatePresence>
