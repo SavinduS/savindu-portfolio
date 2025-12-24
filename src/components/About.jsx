@@ -46,7 +46,7 @@ const About = () => {
         </div>
         
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-            Engineering Logic meets <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Creative Solutions</span>
+            Engineering Logic meets <span className="text-primary">Creative Solutions</span>
         </h2>
         
         <p className="text-textSecondary text-lg leading-relaxed mb-6">
