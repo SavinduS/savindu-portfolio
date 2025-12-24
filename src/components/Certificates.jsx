@@ -85,11 +85,7 @@ const Certificates = () => {
 
 const CertificateCard = ({ cert, index }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+    <div
       className={`group relative p-6 bg-surface rounded-xl border border-white/5 transition-all duration-300 ${cert.border}`}
     >
       {/* Hover Background Glow */}
@@ -114,7 +110,7 @@ const CertificateCard = ({ cert, index }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

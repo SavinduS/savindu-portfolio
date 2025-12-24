@@ -1,16 +1,16 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring, useReducedMotion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
 import profileImg from '../assets/profile.png'; 
 
 const Hero = () => {
   const ref = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
-  // --- Professional Parallax Logic ---
-  // This tracks the mouse relative to the section to create a subtle "depth" effect
+  // --- Professional Parallax Logic (disabled on mobile/reduced motion) ---
   const { scrollYProgress } = useScroll({ target: ref });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 200]);
 
   return (
     <section 
@@ -26,9 +26,9 @@ const Hero = () => {
         
         {/* --- LEFT COLUMN: TEXT CONTENT --- */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -50 }}
+          animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           className="text-center md:text-left z-10"
         >
           <motion.h3 
@@ -37,7 +37,7 @@ const Hero = () => {
             transition={{ delay: 0.2 }}
             className="text-primary font-mono text-lg mb-2"
           >
-            👋 Hi There, I'm
+             Hi There, I'm
           </motion.h3>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
@@ -61,10 +61,10 @@ const Hero = () => {
             />
           </div>
 
-          <p className="text-textSecondary mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-            A 2nd-year Software Engineering undergraduate at SLIIT with a strong grounding in <strong className="text-white">Java (OOP)</strong> and <strong className="text-white">Modern Web Technologies</strong>. 
-            I am looking for an <strong className="text-primary">Internship</strong> opportunity to apply my skills in building scalable, real-world solutions.
-          </p>
+        <p className="text-textSecondary mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+            A 3rd-year Software Engineering undergraduate at SLIIT, bridging the gap between <strong className="text-white">Java (OOP) fundamentals</strong> and <strong className="text-white">Modern Web Architectures</strong>. 
+            Passionately focused on engineering <strong className="text-primary">scalable, high-performance software solutions</strong>.
+        </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
             <motion.a 
@@ -87,26 +87,26 @@ const Hero = () => {
         {/* --- RIGHT COLUMN: PROFESSIONAL IMAGE --- */}
         <div className="relative flex justify-center perspective-1000">
           
-          {/* 1. The Rotating Tech Ring (Behind) */}
+          {/* 1. The Rotating Tech Ring (Behind) - Slower on mobile */}
           <motion.div 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            animate={shouldReduceMotion ? {} : { rotate: 360 }}
+            transition={shouldReduceMotion ? {} : { duration: 30, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full border border-primary/20 border-t-primary/60 border-r-primary/60 mx-auto"
           />
           
-          {/* 2. The Counter-Rotating Ring (Smaller, Inner) */}
+          {/* 2. The Counter-Rotating Ring (Smaller, Inner) - Slower on mobile */}
           <motion.div 
-            animate={{ rotate: -360 }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            animate={shouldReduceMotion ? {} : { rotate: -360 }}
+            transition={shouldReduceMotion ? {} : { duration: 25, repeat: Infinity, ease: "linear" }}
             className="absolute inset-0 w-[260px] h-[260px] md:w-[360px] md:h-[360px] rounded-full border border-dashed border-white/10 mx-auto top-3 md:top-3"
           />
 
-          {/* 3. The Image Container (Floating) */}
+          {/* 3. The Image Container (Floating) - Reduced on mobile */}
           <motion.div
-             animate={{ y: [0, -15, 0] }} // Gentle breathing motion
-             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-             whileHover={{ scale: 1.02 }} // Subtle scale on hover
-             className="w-[250px] h-[250px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-surface shadow-[0_20px_50px_rgba(6,182,212,0.3)] relative z-10 bg-surface mt-4 md:mt-5"
+             animate={shouldReduceMotion ? {} : { y: [0, -15, 0] }}
+             transition={shouldReduceMotion ? {} : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
+             whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
+             className="w-[250px] h-[250px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden border-4 border-surface shadow-[0_20px_50px_rgba(6,182,212,0.3)] relative z-10 bg-surface mt-4 md:mt-5 will-change-transform"
           >
              <img 
                src={profileImg} 

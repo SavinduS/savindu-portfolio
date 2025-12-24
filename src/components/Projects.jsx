@@ -84,13 +84,8 @@ const Projects = () => {
 
 const ProjectCard = ({ project, index }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -10 }}
-      className="bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all shadow-lg group"
+    <div
+      className="bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all duration-300 shadow-lg group hover:-translate-y-2"
     >
       {/* Image area */}
       <div className="h-48 w-full relative overflow-hidden">
@@ -112,7 +107,7 @@ const ProjectCard = ({ project, index }) => {
         </div>
       </div>
 
-      <div className="p-6 flex flex-col flex-grow">
+      <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
@@ -130,7 +125,7 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4 mt-auto pt-4">
+        <div className="flex gap-4 mt-auto">
           <a 
             href={project.github} 
             target="_blank" 
@@ -153,7 +148,7 @@ const ProjectCard = ({ project, index }) => {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { 
   FaCode, FaLaptopCode, 
   FaJava, FaPython, FaGitAlt, FaGithub, FaHtml5, FaCss3Alt, FaPhp 
@@ -11,11 +11,16 @@ import {
 } from 'react-icons/si';
 
 const About = () => {
+  const shouldReduceMotion = useReducedMotion();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: { 
+        staggerChildren: shouldReduceMotion ? 0 : 0.05,
+        delayChildren: shouldReduceMotion ? 0 : 0.1
+      }
     }
   };
 
@@ -29,10 +34,11 @@ const About = () => {
         
        {/* --- LEFT COLUMN: TEXT CONTENT --- */}
         <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, x: -50 }}
+        whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+        className="will-change-transform"
         >
         <div className="flex items-center gap-2 mb-4">
             <span className="h-[2px] w-10 bg-primary"></span>
@@ -44,7 +50,7 @@ const About = () => {
         </h2>
         
         <p className="text-textSecondary text-lg leading-relaxed mb-6">
-            I am a 2nd-year Software Engineering undergraduate at <strong className="text-white">SLIIT</strong>. 
+            I am a 3rd-year Software Engineering undergraduate at <strong className="text-white">SLIIT</strong>. 
             My coding journey began with the strong logic of <strong className="text-white">C and C++</strong>, which laid the foundation for mastering <strong className="text-white">Java (OOP)</strong> and modern web technologies.
         </p>
         
@@ -136,7 +142,7 @@ const TechItem = ({ icon, name, color }) => (
       visible: { scale: 1, opacity: 1 }
     }}
     whileHover={{ y: -5 }}
-    className="flex flex-col items-center justify-center p-4 bg-surface rounded-xl border border-white/5 hover:border-white/20 transition-all group cursor-default"
+    className="flex flex-col items-center justify-center p-4 bg-surface rounded-xl border border-white/5 hover:border-white/20 transition-all group cursor-default will-change-transform"
   >
     <div 
       className="text-3xl mb-2 transition-colors duration-300 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]" 
