@@ -108,8 +108,8 @@ const Navbar = () => {
 
           {/* Download CV Button for Mobile */}
           <a 
-            href="/cv.pdf"
-            download
+            href="/SavinduCV.pdf"
+            download="Savindu_CV.pdf"
             onClick={() => setMenuOpen(false)}
             className="mt-10 px-8 py-3 bg-primary text-background font-bold rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:bg-cyan-400 active:scale-95 transition-all"
           >

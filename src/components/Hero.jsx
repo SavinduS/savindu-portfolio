@@ -68,8 +68,8 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row items-center gap-6 justify-center md:justify-start">
             <motion.a 
-              href="/cv.pdf" 
-              download
+              href="/SavinduCV.pdf" 
+              download="Savindu_CV.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 bg-primary text-background font-bold rounded-full flex items-center gap-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all"
