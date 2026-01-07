@@ -117,11 +117,11 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="text-white text-sm font-medium block mb-2">Name</label>
-                  <input type="text" name="name" placeholder="John Doe" className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" required />
+                  <input type="text" name="name" placeholder="Savindu Weerarathna" className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" required />
                 </div>
                 <div>
                   <label className="text-white text-sm font-medium block mb-2">Email</label>
-                  <input type="email" name="email" placeholder="john@example.com" className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" required />
+                  <input type="email" name="email" placeholder="savindu@gmail.com" className="w-full bg-background border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors" required />
                 </div>
               </div>
               
